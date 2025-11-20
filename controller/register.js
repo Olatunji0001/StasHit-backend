@@ -43,7 +43,7 @@ export const registerRoute = async (req, res) => {
           });
         }
 
-        const hasedPassword = await bcrypt.hash(password, 15);
+        const hasedPassword = await bcrypt.hash(password, 13);
         const saveUser = new register({
           fullname: fullname,
           gmail: gmail,
