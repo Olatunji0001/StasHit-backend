@@ -19,6 +19,7 @@ app.listen(port, async () => {
 app.use(
   cors({
     origin: "http://localhost:3000", // your frontend origin
+    methods: "GET,POST,PUT,DELETE",
     credentials: true, // allow cookies to be sent
   })
 );
