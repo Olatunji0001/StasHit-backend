@@ -16,13 +16,16 @@ app.listen(port, async () => {
   );
 });
 
+import cors from "cors";
+
 app.use(
   cors({
-    origin: "http://localhost:3000", // your frontend origin
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true, // allow cookies to be sent
+    origin: ["http://localhost:3000", "https://stas-hit.vercel.app"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // required for cookies
   })
 );
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(router);
