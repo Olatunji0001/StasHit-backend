@@ -8,7 +8,6 @@ export const editData = async (req, res) => {
     const { contactname, contact, relationship, notes, email } = req.body;
     const { id } = req.params;
 
-    
     if (!(contactname && contact && relationship && id)) {
       return res.status(400).json({
         message: "Input all required fields",
@@ -45,6 +44,7 @@ export const editData = async (req, res) => {
       }
     }
   } catch (error) {
+    console.log(error.message)
     return res.status(500).json({
       message: "Internal server error, try again later",
     });

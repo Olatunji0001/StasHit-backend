@@ -36,7 +36,7 @@ export const loginRoute = async (req, res) => {
             const token = jwt.sign(payload, jwtKey, { expiresIn: "33d" });
             res.cookie("access_token", token, {
               httpOnly: true, // cannot be accessed by JS
-              secure: false, // true in production with HTTPS
+              secure: true, // true in production with HTTPS
               sameSite: "strict", // prevents CSRF
               maxAge: 33 * 24 * 60 * 60 * 1000,
             });

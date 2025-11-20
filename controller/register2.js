@@ -41,7 +41,7 @@ export const registerRoute2 = async (req, res) => {
           const jwtToken = jwt.sign(payload, jwtKey, { expiresIn: "33d" });
           res.cookie("access_token", jwtToken, {
             httpOnly: true, // cannot be accessed by JS
-            secure: false, // true in production with HTTPS
+            secure: true, // true in production with HTTPS
             sameSite: "strict", // prevents CSRF
             maxAge: 33 * 24 * 60 * 60 * 1000,
           });
