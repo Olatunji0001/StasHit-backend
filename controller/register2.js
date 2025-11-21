@@ -42,7 +42,7 @@ export const registerRoute2 = async (req, res) => {
           res.cookie("access_token", jwtToken, {
             httpOnly: true, // cannot be accessed by JS
             secure: true, // true in production with HTTPS
-            sameSite: "strict", // prevents CSRF
+            sameSite: "none", // prevents CSRF
             maxAge: 33 * 24 * 60 * 60 * 1000,
           });
           return res.status(201).json({
