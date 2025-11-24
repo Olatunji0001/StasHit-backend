@@ -30,7 +30,7 @@ export const registerRoute = async (req, res) => {
         });
       } else {
         try {
-          transporter.sendMail({
+          await transporter.sendMail({
             from: `StasHit <${process.env.MAIL_SENDER_EMAIL}>`,
             to: gmail,
             subject: "🔐 Verify Your StasHit Account",
