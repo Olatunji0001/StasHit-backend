@@ -34,7 +34,7 @@ export const information = async (req, res) => {
           message: "Saved successfully",
         });
       } else {
-        return res.status(400).json({
+        return res.status(401).json({
             message : "Pls signup"
         })
       }
