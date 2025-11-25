@@ -11,7 +11,9 @@ export const information = async (req, res) => {
       });
     }
     if (notes.length > 50) {
-        return res.status(204).json()
+        return res.status(400).json({
+          message : "Note must be 50 characters or less"
+        })
     }
     if ((contactname && contact && relationship) || notes || email) {
       const jwtGmail = jwtInfo.gmail;
