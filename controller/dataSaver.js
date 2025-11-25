@@ -10,10 +10,11 @@ export const information = async (req, res) => {
         message: "Input all required fields",
       });
     }
-    if (notes.length > 50) {
-        return res.status(400).json({
-          message : "Note must be 50 characters or less"
-        })
+    if (notes && notes.length > 50) {
+      return res.status(400).json({
+        message: "Note must be 50 characters or less",
+        currentLength: notes.length,
+      });
     }
     if ((contactname && contact && relationship) || notes || email) {
       const jwtGmail = jwtInfo.gmail;
@@ -37,8 +38,8 @@ export const information = async (req, res) => {
         });
       } else {
         return res.status(401).json({
-            message : "Pls signup"
-        })
+          message: "Pls signup",
+        });
       }
     }
   } catch (error) {
