@@ -20,7 +20,8 @@ export const loginRoute = async (req, res) => {
         const verify = await register.findOne({ gmail: gmail, verified: true });
         if (!verify) {
           return res.status(400).json({
-            message: "Your account is not verified yet",
+            message:
+              "Your account is not verified. You can sign up again using the Gmail you entered.",
           });
         }
         if (verify) {
