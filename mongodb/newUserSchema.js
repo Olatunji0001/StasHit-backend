@@ -15,13 +15,6 @@ const newUser = new mongoose.Schema(
       type: String,
       required: true,
     },
-    verified: {
-      type: Boolean,
-      required: true,
-    },
-    code: {
-      type: Number,
-    },
   },
   { timestamps: true }
 );

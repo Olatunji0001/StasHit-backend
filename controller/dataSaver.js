@@ -18,7 +18,7 @@ export const information = async (req, res) => {
     }
     if ((contactname && contact && relationship) || notes || email) {
       const jwtGmail = jwtInfo.gmail;
-      const check = await register.findOne({ gmail: jwtGmail, verified: true });
+      const check = await register.findOne({ gmail: jwtGmail});
       if (check) {
         const data = new saveDetails({
           account_owner: {

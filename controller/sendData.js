@@ -5,7 +5,7 @@ export const sendData = async (req, res) => {
     const jwtInfo = req.user;
     const gmail = jwtInfo.gmail;
     const id = jwtInfo.id;
-    const check = await register.findOne({ gmail: gmail, verified: true });
+    const check = await register.findOne({ gmail: gmail});
     if (check) {
       const search = await saveDetails.find({account_owner: { gmail, id : id } });
 

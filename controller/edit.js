@@ -14,10 +14,7 @@ export const editData = async (req, res) => {
       });
     }
     if ((contactname && contact && relationship && id) || notes || email) {
-      const verify = await register.findOne({ gmail: gmail, verified: true });
-      if (!verify) {
-        return res.status(401).json({ message: "Unauthorized" });
-      }
+      const verify = await register.findOne({ gmail: gmail});
       if (verify) {
         const find = await saveDetails.findOne({ _id: id });
         if (!find) {

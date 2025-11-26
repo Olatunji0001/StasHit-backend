@@ -17,17 +17,10 @@ export const loginRoute = async (req, res) => {
     if (gmail && password) {
       const check = await register.findOne({ gmail: gmail });
       if (check) {
-        const verify = await register.findOne({ gmail: gmail, verified: true });
-        if (!verify) {
-          return res.status(400).json({
-            message:
-              "Your account is not verified. You can sign up again using the Gmail you entered.",
-          });
-        }
-        if (verify) {
+        if (check) {
           const confirmPassword = await bcrypt.compare(
             password,
-            verify.password
+            check.password
           );
           if (confirmPassword === true) {
             const payload = {
@@ -38,7 +31,7 @@ export const loginRoute = async (req, res) => {
             res.cookie("access_token", token, {
               httpOnly: true, // cannot be accessed by JS
               secure: true, // true in production with HTTPS
-              sameSite: "none", // prevents CSRF
+              sameSite: false, // prevents CSRF
               maxAge: 33 * 24 * 60 * 60 * 1000,
             });
             return res.status(200).json({
