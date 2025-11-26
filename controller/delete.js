@@ -12,7 +12,7 @@ export const deleteData = async (req, res) => {
     }
     if (id) {
       const email = token.gmail;
-      const verify= await register.findOne({ gmail: email, verified: true });
+      const verify= await register.findOne({ gmail: email});
       if (verify) {
         const deleteData = await saveDetails.deleteOne({ _id: id });
         return res.status(200).json({
